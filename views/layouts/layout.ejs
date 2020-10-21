@@ -6,10 +6,9 @@
     <title>Mybrary</title>
 </head>
 <body>
-    Header
-    <br>
+    <%- include('../partials/header.ejs') %>  <!--  This includes the file specified in this file -->
+    <%- include('../partials/errormessage.ejs') %>  <!--  This includes the error file specified in this file -->
+
     <%- body %> <!-- This includes every other page in the layout.ejs file -->
-    <br>
-    Footer
 </body>
 </html>

@@ -9,10 +9,12 @@ const app = express();
 
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 // Routes
 
 const indexRoute = require('./routes/index');
+const authorRoute = require('./routes/authors');
 
 // Settings
 
@@ -24,8 +26,10 @@ app.set('layout', 'layouts/layout'); // this tells express where our layout file
 
 app.use(express.static('public')); // this tells express where are our static files such as stylesheets, images are
 app.use(expressLayouts); // this tells express to use express layouts
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false })); // this package is used to access the form input. urlencoded() method is used because we want to access url encoded info it binds the info with req.body
 
 app.use('/', indexRoute);
+app.use('/authors', authorRoute);
 
 
 // Setting up database
